@@ -65,11 +65,7 @@ function Strings( config ) {
 			'menubar/play/play': 'Play',
 
 			'menubar/examples': 'Examples',
-			'menubar/examples/Arkanoid': 'Arkanoid',
-			'menubar/examples/Camera': 'Camera',
-			'menubar/examples/Particles': 'Particles',
-			'menubar/examples/Pong': 'Pong',
-			'menubar/examples/Shaders': 'Shaders',
+			'menubar/examples/Dove': 'Dove',
 
 			'menubar/view': 'View',
 			'menubar/view/fullscreen': 'Fullscreen',
@@ -402,11 +398,7 @@ function Strings( config ) {
 			'menubar/play/play': 'Jouer',
 
 			'menubar/examples': 'Exemples',
-			'menubar/examples/Arkanoid': 'Arkanoid',
-			'menubar/examples/Camera': 'Camera',
-			'menubar/examples/Particles': 'Particles',
-			'menubar/examples/Pong': 'Pong',
-			'menubar/examples/Shaders': 'Shaders',
+			'menubar/examples/Dove': 'Dove',
 
 			'menubar/view': 'View',
 			'menubar/view/fullscreen': 'Fullscreen',
@@ -739,11 +731,7 @@ function Strings( config ) {
 			'menubar/play/play': '启动',
 
 			'menubar/examples': '示例',
-			'menubar/examples/Arkanoid': '打砖块',
-			'menubar/examples/Camera': ' 摄像机',
-			'menubar/examples/Particles': '粒子',
-			'menubar/examples/Pong': '乒乓球',
-			'menubar/examples/Shaders': '着色器',
+			'menubar/examples/Dove': '多芬',
 
 			'menubar/view': '视图',
 			'menubar/view/fullscreen': '全屏',
