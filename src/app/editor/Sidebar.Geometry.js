@@ -1,4 +1,4 @@
-import * as THREE from 'three/build/three.module.js';
+import * as THREE from 'three';
 
 import { UIPanel, UIRow, UIText, UIInput, UIButton, UISpan } from '@src/app/libs/ui.js';
 
@@ -206,7 +206,7 @@ function SidebarGeometry( editor ) {
 
 				} else {
 
-					var { GeometryParametersPanel } = await import( `./Sidebar.Geometry.${ geometry.type }.js` );
+					var { GeometryParametersPanel } = await import( `./geometries/Sidebar.Geometry.${ geometry.type }.js` );
 
 					parameters.add( new GeometryParametersPanel( editor, object ) );
 

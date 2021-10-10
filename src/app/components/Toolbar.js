@@ -1,4 +1,7 @@
 import { UIPanel, UIButton, UICheckbox } from '@src/app/libs/ui.js';
+import translateSvg from '@src/statics/resources/translate.svg';
+import rotateSvg from '@src/statics/resources/rotate.svg';
+import scaleSvg from '@src/statics/resources/scale.svg';
 
 function Toolbar( editor ) {
 
@@ -7,12 +10,11 @@ function Toolbar( editor ) {
 
 	var container = new UIPanel();
 	container.setId( 'toolbar' );
-
 	// translate / rotate / scale
 
 	var translateIcon = document.createElement( 'img' );
 	translateIcon.title = strings.getKey( 'toolbar/translate' );
-	translateIcon.src = 'images/translate.svg';
+	translateIcon.src = translateSvg;
 
 	var translate = new UIButton();
 	translate.dom.className = 'Button selected';
@@ -26,7 +28,7 @@ function Toolbar( editor ) {
 
 	var rotateIcon = document.createElement( 'img' );
 	rotateIcon.title = strings.getKey( 'toolbar/rotate' );
-	rotateIcon.src = 'images/rotate.svg';
+	rotateIcon.src = rotateSvg;
 
 	var rotate = new UIButton();
 	rotate.dom.appendChild( rotateIcon );
@@ -39,7 +41,7 @@ function Toolbar( editor ) {
 
 	var scaleIcon = document.createElement( 'img' );
 	scaleIcon.title = strings.getKey( 'toolbar/scale' );
-	scaleIcon.src = 'images/scale.svg';
+	scaleIcon.src = scaleSvg;
 
 	var scale = new UIButton();
 	scale.dom.appendChild( scaleIcon );

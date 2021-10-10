@@ -55,7 +55,8 @@ function Storage() {
 			var request = objectStore.get( 0 );
 			request.onsuccess = function ( event ) {
 
-				callback( event.target.result );
+				var data = JSON.parse(event.target.result);
+				callback( data );
 
 			};
 
@@ -67,7 +68,7 @@ function Storage() {
 
 			var transaction = database.transaction( [ 'states' ], 'readwrite' );
 			var objectStore = transaction.objectStore( 'states' );
-			var request = objectStore.put( data, 0 );
+			var request = objectStore.put( JSON.stringify(data), 0 );
 			request.onsuccess = function () {
 
 				console.log( '[' + /\d\d\:\d\d\:\d\d/.exec( new Date() )[ 0 ] + ']', 'Saved state to IndexedDB. ' + ( performance.now() - start ).toFixed( 2 ) + 'ms' );

@@ -303,7 +303,7 @@ select {
 #viewport {
 	position: absolute;
 	top: 32px;
-	left: 0;
+	left: 150px;
 	right: 300px;
 	bottom: 0;
 }
@@ -404,6 +404,66 @@ select {
 			margin: 0 !important;
 		}
 
+#modelBar {
+	position: absolute;
+	left: 0;
+	top: 32px;
+	bottom: 0;
+	width: 150px;
+	background: #eee;
+	overflow: auto;
+}
+
+	#modelBar .title {
+		display: inline-block;
+		color: #888;
+		margin: 0;
+		padding: 8px;
+		line-height: 16px;
+	}
+
+	#modelBar .models {
+		cursor: pointer;
+		position: fixed;
+		padding: 5px 0;
+		background: #eee;
+		width: 150px;
+		max-height: calc(100% - 80px);
+		overflow: auto;
+	}
+
+	#modelBar .models:hover {
+		display: block;
+	}
+
+		#modelBar .models hr {
+			border-color: #ddd;
+		}
+
+		#modelBar .models .model {
+			color: #666;
+			background-color: transparent;
+			padding: 5px 10px;
+			margin: 0 !important;
+		}
+
+			#modelBar .models .model:hover {
+				color: #fff;
+				background-color: #08f;
+			}
+
+			#modelBar .models .model:active {
+				color: #666;
+				background: transparent;
+			}
+
+	#modelBar .models .inactive {
+		color: #bbb;
+		background-color: transparent;
+		padding: 5px 10px;
+		margin: 0 !important;
+	}
+
 #sidebar {
 	position: absolute;
 	right: 0;
@@ -451,15 +511,23 @@ select {
 
 #toolbar {
 	position: absolute;
-	left: 10px;
-	top: 42px;
-	width: 32px;
+	left: calc(50% - 180px);
+	bottom: 16px;
+	height: 32px;
+	width: 160px;
+	padding: 4px;
 	background: #eee;
 	text-align: center;
 }
 
-	#toolbar button, #toolbar input {
+	#toolbar button {
 		height: 32px;
+		margin-right: 10px;
+	}
+
+	#toolbar input {
+		height: 32px;
+		margin: 0px 10px 5px 5px;
 	}
 
 		#toolbar button img {
@@ -554,6 +622,13 @@ select {
 		right: 0;
 		top: 32px;
 		height: calc(100% - 352px);
+	}
+
+	#modelBar {
+		left: 0;
+		top: 32px;
+		width: 150px;
+		bottom: 320px;
 	}
 
 	#sidebar {

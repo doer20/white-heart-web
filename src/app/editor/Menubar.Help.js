@@ -16,32 +16,6 @@ function MenubarHelp( editor ) {
 	options.setClass( 'options' );
 	container.add( options );
 
-	// Source code
-
-	var option = new UIRow();
-	option.setClass( 'option' );
-	option.setTextContent( strings.getKey( 'menubar/help/source_code' ) );
-	option.onClick( function () {
-
-		window.open( 'https://github.com/mrdoob/three.js/tree/master/editor', '_blank' );
-
-	} );
-	options.add( option );
-
-	/*
-	// Icon
-
-	var option = new UIRow();
-	option.setClass( 'option' );
-	option.setTextContent( strings.getKey( 'menubar/help/icons' ) );
-	option.onClick( function () {
-
-		window.open( 'https://www.flaticon.com/packs/interface-44', '_blank' );
-
-	} );
-	options.add( option );
-	*/
-
 	// About
 
 	var option = new UIRow();
@@ -49,7 +23,7 @@ function MenubarHelp( editor ) {
 	option.setTextContent( strings.getKey( 'menubar/help/about' ) );
 	option.onClick( function () {
 
-		window.open( 'https://threejs.org', '_blank' );
+		alert( '白心科技' );
 
 	} );
 	options.add( option );

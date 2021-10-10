@@ -6,6 +6,7 @@ import { Editor } from '@src/app/editor/Editor.js'
 import { MainRender } from './MainRender.js';
 import { Toolbar } from './Toolbar.js';
 import { Player } from './Player.js';
+import { ModelBar } from './ModelBar.js';
 import { Sidebar } from './Sidebar.js';
 import { Menubar } from './Menubar.js';
 import { Resizer } from './Resizer.js';
@@ -44,6 +45,9 @@ class App extends Component {
 
         var player = new Player( editor );
         document.body.appendChild( player.dom );
+
+        var modelBar = new ModelBar( editor );
+        document.body.appendChild( modelBar.dom );
 
         var sidebar = new Sidebar( editor );
         document.body.appendChild( sidebar.dom );

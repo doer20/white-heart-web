@@ -1,4 +1,4 @@
-import * as THREE from 'three/build/three.module.js';
+import * as THREE from 'three';
 
 import { zipSync, strToU8 } from 'three/examples/jsm/libs/fflate.module.js';
 
@@ -399,11 +399,11 @@ function MenubarFile( editor ) {
 
 	options.add( new UIHorizontalRule() );
 
-	// Publish
+	// Save
 
 	var option = new UIRow();
 	option.setClass( 'option' );
-	option.setTextContent( strings.getKey( 'menubar/file/publish' ) );
+	option.setTextContent( strings.getKey( 'menubar/file/save' ) );
 	option.onClick( function () {
 
 		var toZip = {};

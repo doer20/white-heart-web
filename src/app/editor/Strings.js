@@ -22,7 +22,7 @@ function Strings( config ) {
 			'menubar/file/export/stl': 'Export STL',
 			'menubar/file/export/stl_binary': 'Export STL (Binary)',
 			'menubar/file/export/usdz': 'Export USDZ',
-			'menubar/file/publish': 'Publish',
+			'menubar/file/save': 'Save',
 
 			'menubar/edit': 'Edit',
 			'menubar/edit/undo': 'Undo (Ctrl+Z)',
@@ -79,6 +79,8 @@ function Strings( config ) {
 			'menubar/help/icons': 'Icon Pack',
 			'menubar/help/about': 'About',
 
+			'modelBar/title': 'Model Select',
+
 			'sidebar/animations': 'Animations',
 			'sidebar/animations/play': 'Play',
 			'sidebar/animations/stop': 'Stop',
@@ -98,6 +100,7 @@ function Strings( config ) {
 			'sidebar/object/new': 'New',
 			'sidebar/object/uuid': 'UUID',
 			'sidebar/object/name': 'Name',
+			'sidebar/object/explode': 'Explode',
 			'sidebar/object/position': 'Position',
 			'sidebar/object/rotation': 'Rotation',
 			'sidebar/object/scale': 'Scale',
@@ -356,7 +359,7 @@ function Strings( config ) {
 			'menubar/file/export/stl': 'Exporter STL',
 			'menubar/file/export/stl_binary': 'Exporter STL (Binaire)',
 			'menubar/file/export/usdz': 'Exporter USDZ',
-			'menubar/file/publish': 'Publier',
+			'menubar/file/save': 'Publier',
 
 			'menubar/edit': 'Edition',
 			'menubar/edit/undo': 'Annuler (Ctrl+Z)',
@@ -413,6 +416,8 @@ function Strings( config ) {
 			'menubar/help/icons': 'Icon Pack',
 			'menubar/help/about': 'A propos',
 
+			'modelBar/title': 'Sélection du modèle',
+
 			'sidebar/animations': 'Animations',
 			'sidebar/animations/play': 'Play',
 			'sidebar/animations/stop': 'Stop',
@@ -432,6 +437,7 @@ function Strings( config ) {
 			'sidebar/object/new': 'Nouveau',
 			'sidebar/object/uuid': 'UUID',
 			'sidebar/object/name': 'Nom',
+			'sidebar/object/explode': 'Explosion',
 			'sidebar/object/position': 'Position',
 			'sidebar/object/rotation': 'Rotation',
 			'sidebar/object/scale': 'Échelle',
@@ -690,7 +696,7 @@ function Strings( config ) {
 			'menubar/file/export/stl': '导出STL',
 			'menubar/file/export/stl_binary': '导出STL(二进制)',
 			'menubar/file/export/usdz': '导出USDZ',
-			'menubar/file/publish': '发布',
+			'menubar/file/save': '保存',
 
 			'menubar/edit': '编辑',
 			'menubar/edit/undo': '撤销 (Ctrl+Z)',
@@ -747,6 +753,8 @@ function Strings( config ) {
 			'menubar/help/icons': '图标组件包',
 			'menubar/help/about': '关于',
 
+			'modelBar/title': '模型选择',
+
 			'sidebar/animations': '动画',
 			'sidebar/animations/play': '播放',
 			'sidebar/animations/stop': '暂停',
@@ -766,6 +774,7 @@ function Strings( config ) {
 			'sidebar/object/new': '更新',
 			'sidebar/object/uuid': '识别码',
 			'sidebar/object/name': '名称',
+			'sidebar/object/explode': '爆炸视图',
 			'sidebar/object/position': '位置',
 			'sidebar/object/rotation': '旋转',
 			'sidebar/object/scale': '缩放',
@@ -963,7 +972,7 @@ function Strings( config ) {
 			'sidebar/project': '项目',
 			'sidebar/project/title': '标题',
 			'sidebar/project/editable': '编辑性',
-			'sidebar/project/vr': '虚拟现实',
+			'sidebar/project/vr': 'VR',
 			'sidebar/project/renderer': '渲染器',
 			'sidebar/project/antialias': '抗锯齿',
 			'sidebar/project/shadows': '阴影',

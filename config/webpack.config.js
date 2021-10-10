@@ -328,6 +328,7 @@ module.exports = function (webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         '@src': path.resolve(__dirname, '../src'),
+        '@public': path.resolve(__dirname, '../public'),
         '@three': path.resolve(__dirname, '../node_modules/three'),
         'react-native': 'react-native-web',
         // Allows for better profiling with ReactDevTools

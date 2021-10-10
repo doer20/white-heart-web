@@ -1,8 +1,11 @@
-import * as THREE from 'three/build/three.module.js';
+import * as THREE from 'three';
 
 import { UIPanel, UIRow, UIInput, UIButton, UIColor, UICheckbox, UIInteger, UITextArea, UIText, UINumber } from '@src/app/libs/ui.js';
 import { UIBoolean } from '@src/app/libs/ui.three.js';
 
+import { Explode } from './Explode.js';
+
+import { MultiCmdsCommand } from './commands/MultiCmdsCommand.js';
 import { SetUuidCommand } from './commands/SetUuidCommand.js';
 import { SetValueCommand } from './commands/SetValueCommand.js';
 import { SetPositionCommand } from './commands/SetPositionCommand.js';
@@ -23,46 +26,46 @@ function SidebarObject( editor ) {
 
 	// Actions
 
-	/*
-	var objectActions = new UI.Select().setPosition( 'absolute' ).setRight( '8px' ).setFontSize( '11px' );
-	objectActions.setOptions( {
+	
+	// var objectActions = new UISelect().setPosition( 'absolute' ).setRight( '8px' ).setFontSize( '11px' );
+	// objectActions.setOptions( {
 
-		'Actions': 'Actions',
-		'Reset Position': 'Reset Position',
-		'Reset Rotation': 'Reset Rotation',
-		'Reset Scale': 'Reset Scale'
+	// 	'Actions': 'Actions',
+	// 	'Reset Position': 'Reset Position',
+	// 	'Reset Rotation': 'Reset Rotation',
+	// 	'Reset Scale': 'Reset Scale'
 
-	} );
-	objectActions.onClick( function ( event ) {
+	// } );
+	// objectActions.onClick( function ( event ) {
 
-		event.stopPropagation(); // Avoid panel collapsing
+	// 	event.stopPropagation(); // Avoid panel collapsing
 
-	} );
-	objectActions.onChange( function ( event ) {
+	// } );
+	// objectActions.onChange( function ( event ) {
 
-		var object = editor.selected;
+	// 	var object = editor.selected;
 
-		switch ( this.getValue() ) {
+	// 	switch ( this.getValue() ) {
 
-			case 'Reset Position':
-				editor.execute( new SetPositionCommand( editor, object, new Vector3( 0, 0, 0 ) ) );
-				break;
+	// 		case 'Reset Position':
+	// 			editor.execute( new SetPositionCommand( editor, object, new THREE.Vector3( 0, 0, 0 ) ) );
+	// 			break;
 
-			case 'Reset Rotation':
-				editor.execute( new SetRotationCommand( editor, object, new Euler( 0, 0, 0 ) ) );
-				break;
+	// 		case 'Reset Rotation':
+	// 			editor.execute( new SetRotationCommand( editor, object, new THREE.Euler( 0, 0, 0 ) ) );
+	// 			break;
 
-			case 'Reset Scale':
-				editor.execute( new SetScaleCommand( editor, object, new Vector3( 1, 1, 1 ) ) );
-				break;
+	// 		case 'Reset Scale':
+	// 			editor.execute( new SetScaleCommand( editor, object, new THREE.Vector3( 1, 1, 1 ) ) );
+	// 			break;
 
-		}
+	// 	}
 
-		this.setValue( 'Actions' );
+	// 	this.setValue( 'Actions' );
 
-	} );
-	container.addStatic( objectActions );
-	*/
+	// } );
+	// container.add( objectActions );
+	
 
 	// type
 
@@ -105,6 +108,16 @@ function SidebarObject( editor ) {
 	objectNameRow.add( objectName );
 
 	container.add( objectNameRow );
+
+	// explode
+	
+	var objectExplodeRow = new UIRow();
+	var objectExplodedIntensity = new UINumber().setPrecision( 3 ).setWidth( '50px' ).onChange( update );
+
+	objectExplodeRow.add( new UIText( strings.getKey( 'sidebar/object/explode' ) ).setWidth( '90px' ) );
+	objectExplodeRow.add( objectExplodedIntensity );
+
+	container.add( objectExplodeRow );
 
 	// position
 
@@ -363,6 +376,7 @@ function SidebarObject( editor ) {
 
 	var objectUserDataRow = new UIRow();
 	var objectUserData = new UITextArea().setWidth( '150px' ).setHeight( '40px' ).setFontSize( '12px' ).onChange( update );
+	objectUserData.dom.readonly = true;
 	objectUserData.onKeyUp( function () {
 
 		try {
@@ -392,6 +406,25 @@ function SidebarObject( editor ) {
 	function update() {
 
 		var object = editor.selected;
+
+		if ( object.children ) {
+			var explodedIntensity = objectExplodedIntensity.getValue();
+			Explode.explodeInit(editor, object);
+			const cmds = [];
+
+			object.children.forEach(function(mesh) {
+				mesh.traverse(function (value) {
+					if(!value.isMesh || !value.userData.worldDir) return;
+
+					//爆炸公式
+					var newPosition = new THREE.Vector3().copy(value.userData.oldPs).add(new THREE.Vector3().copy(value.userData.worldDir).multiplyScalar(explodedIntensity));
+
+					cmds.push(new SetPositionCommand( editor, value, newPosition ));
+				});
+			});
+			cmds.push(new SetValueCommand( editor, object.userData, 'explodedIntensity', explodedIntensity ));
+			editor.execute( new MultiCmdsCommand(editor, cmds));
+		}
 
 		if ( object !== null ) {
 
@@ -568,23 +601,23 @@ function SidebarObject( editor ) {
 
 			}
 
-			try {
+			// can not edit
+			// try {
 
-				var userData = JSON.parse( objectUserData.getValue() );
-				if ( JSON.stringify( object.userData ) != JSON.stringify( userData ) ) {
+			// 	var userData = JSON.parse( objectUserData.getValue() );
+			// 	if ( JSON.stringify( object.userData ) != JSON.stringify( userData ) ) {
 
-					editor.execute( new SetValueCommand( editor, object, 'userData', userData ) );
+			// 		editor.execute( new SetValueCommand( editor, object, 'userData', userData ) );
 
-				}
+			// 	}
 
-			} catch ( exception ) {
+			// } catch ( exception ) {
 
-				console.warn( exception );
+			// 	console.warn( exception );
 
-			}
+			// }
 
 		}
-
 	}
 
 	function updateRows( object ) {
@@ -630,6 +663,7 @@ function SidebarObject( editor ) {
 		}
 
 		//
+		object.userData.explodedIntensity ? objectExplodedIntensity.setValue(object.userData.explodedIntensity) : objectExplodedIntensity.setValue(0);
 
 		if ( object.isLight ) {
 

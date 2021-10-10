@@ -1,6 +1,6 @@
 import { UIPanel, UIRow, UIInput, UICheckbox, UIText, UISpan } from '@src/app/libs/ui.js';
 
-/* import { SidebarProjectMaterials } from './Sidebar.Project.Materials.js'; */
+// import { SidebarProjectMaterials } from './Sidebar.Project.Materials.js';
 import { SidebarProjectRenderer } from './Sidebar.Project.Renderer.js';
 import { SidebarProjectVideo } from './Sidebar.Project.Video.js';
 
@@ -43,7 +43,7 @@ function SidebarProject( editor ) {
 	editableRow.add( new UIText( strings.getKey( 'sidebar/project/editable' ) ).setWidth( '90px' ) );
 	editableRow.add( editable );
 
-	settings.add( editableRow );
+	// settings.add( editableRow );
 
 	// WebVR
 
@@ -61,7 +61,7 @@ function SidebarProject( editor ) {
 
 	//
 
-	/* container.add( new SidebarProjectMaterials( editor ) ); */
+	// container.add( new SidebarProjectMaterials( editor ) );
 	container.add( new SidebarProjectRenderer( editor ) );
 
 	if ( 'SharedArrayBuffer' in window ) {

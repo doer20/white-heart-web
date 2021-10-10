@@ -111,7 +111,7 @@ function MenubarEdit( editor ) {
 		editor.execute( new SetPositionCommand( editor, object, newPosition ) );
 
 	} );
-	options.add( option );
+	// options.add( option );
 
 	// Clone
 
@@ -151,7 +151,7 @@ function MenubarEdit( editor ) {
 
 	//
 
-	options.add( new UIHorizontalRule() );
+	// options.add( new UIHorizontalRule() );
 
 	// Set textures to sRGB. See #15903
 
@@ -163,7 +163,7 @@ function MenubarEdit( editor ) {
 		editor.scene.traverse( fixColorMap );
 
 	} );
-	options.add( option );
+	// options.add( option );
 
 	var colorMaps = [ 'map', 'envMap', 'emissiveMap' ];
 
